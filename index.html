@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>버튼 클릭 예제</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="buttonClicked()">여기를 클릭하세요</button>
+
+        <script>
+            function buttonClicked() {
+                alert("버튼이 클릭되었습니다!");
+                args = {
+                    type: "I",
+                    url: "https://dev-apigw.sktpass.com/spamweb/#/setting",
+                };
+                window.tauthJs["openWebPage"](args);
+            }
+        </script>
+    </body>
+</html>
