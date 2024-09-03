@@ -38,10 +38,10 @@
                     //args 는 String 인 상태, 빈 객체를 의미하는 "{}" 문자열인 경우는 파라메터로 전달하지 않음
                     message.args = args;
                     alert("iOS args: " + message);
-                    window.webkit.messageHandlers.tauthJs.postMessage(message);
+                    //window.webkit.messageHandlers.tauthJs.postMessage(message);
                 } else if (userAgent.indexOf("Android") > 0) {
                     alert("Android args: " + args);
-                    window.tauthJs["openWebPage"](JSON.stringify(args));
+                    //window.tauthJs["openWebPage"](JSON.stringify(args));
                 } else {
                     alert(userAgent);
                 }
