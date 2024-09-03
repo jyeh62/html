@@ -25,12 +25,27 @@
 
         <script>
             function buttonClicked() {
+                var userAgent = navigator.userAgent;
+                if (userAgent.indexOf("iOS") > 0) {
+                    //iOS는 파라메터를 객체 형태로 전달해야하므로 객체 생성
+                    var message = { method: "openWebPage" };
+
+                    //args 는 String 인 상태, 빈 객체를 의미하는 "{}" 문자열인 경우는 파라메터로 전달하지 않음
+                    message.args = {
+                        type: "I",
+                        url: "https://dev-apigw.sktpass.com/spamweb/#/setting",
+                    };
+                    alert(message);
+                    window.webkit.messageHandlers.tauthJs.postMessage(message);
+                } else if (userAgent.indexOf("Android") > 0) {
+                    args = {
+                        type: "I",
+                        url: "https://dev-apigw.sktpass.com/spamweb/#/setting",
+                    };
+                    alert(args);
+                    window.tauthJs["openWebPage"](JSON.stringify(args));
+                }
                 alert("버튼이 클릭되었습니다!");
-                args = {
-                    type: "I",
-                    url: "https://dev-apigw.sktpass.com/spamweb/#/setting",
-                };
-                window.tauthJs["openWebPage"](JSON.stringify(args));
             }
         </script>
     </body>
