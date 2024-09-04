@@ -50,6 +50,7 @@
                     window.tauthJs["openWebPage"](JSON.stringify(args));
                 } else {
                     alert(userAgent);
+                    window.parent.postMessage("send click event");
                 }
             }
         </script>
