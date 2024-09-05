@@ -25,33 +25,11 @@
 
         <script>
             function buttonClicked() {
-                var userAgent = navigator.userAgent;
-                args = {
-                    type: "I",
-                    url: "https://dev-apigw.sktpass.com/spamweb/#/setting",
-                    headerObj: {
-                        title: "스팸필터링",
-                        closeType: "C",
-                    },
+                var nativeEvent = {
+                    eventName: "requestPageOpen",
+                    params: "blockUrl",
                 };
-
-                if (userAgent.indexOf("iOS") > 0) {
-                    //iOS는 파라메터를 객체 형태로 전달해야하므로 객체 생성
-                    var message = { method: "openWebPage" };
-
-                    //args 는 String 인 상태, 빈 객체를 의미하는 "{}" 문자열인 경우는 파라메터로 전달하지 않음
-                    message.args = args;
-                    //alert("iOS args: " + message);
-                    console.log("iOS args: " + message);
-                    window.webkit.messageHandlers.tauthJs.postMessage(message);
-                } else if (userAgent.indexOf("Android") > 0) {
-                    //alert("Android args: " + args);
-                    console.log("Android args: " + args);
-                    window.tauthJs["openWebPage"](JSON.stringify(args));
-                } else {
-                    alert(userAgent);
-                    window.parent.postMessage("send click event", "*");
-                }
+                window.parent.postMessage(JSON.stringify(nativeEvent), "*");
             }
         </script>
     </body>
